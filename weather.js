@@ -10,8 +10,8 @@ const getWeather = async (lat, long) => {
     .then((res) => {
       return res.json();
     })
-    .then((potato) => {
-      console.log(potato);
+    .then((info) => {
+      weather.innerText = `${info.main.temp}℃ in ${info.name}`;
     });
 };
 
