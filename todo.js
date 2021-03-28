@@ -1,6 +1,7 @@
 const toDoForm = document.querySelector(".toDoForm"),
   toDoInput = toDoForm.querySelector("input"),
-  toDoList = document.querySelector(".toDoList");
+  toDoList = document.querySelector(".toDoList"),
+  willDoList = document.querySelector(".willDoList");
 
 let toDos = [];
 let willDos = [];
@@ -10,7 +11,7 @@ const toDoSave = () => {
 };
 
 const willDoSave = () => {
-  localStorage.setItem("WILLDO_LS", JSON.stringify(willDos));
+  localStorage.setItem("WILLDOS_LS", JSON.stringify(willDos));
 };
 
 const handleDelBtn = (event) => {
@@ -30,6 +31,7 @@ const handlePoBtn = (event) => {
   const changeToDos = toDos.filter((a) => {
     return a.id === parseInt(li.id);
   });
+  //Todo list에서 지우기
   willDos = willDos.concat(changeToDos);
   willDoSave();
 };
@@ -113,6 +115,7 @@ const loadToDos = () => {
 
 function init() {
   loadToDos();
+  loadWillDos();
   toDoForm.addEventListener("submit", handleSubmit);
 }
 

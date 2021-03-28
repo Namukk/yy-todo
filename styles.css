@@ -7,7 +7,43 @@
   left: 0;
 }
 
-#clockContiner {
-  width: 300;
-  height: 300;
+#clock {
+  font-size: 50px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -140px;
+  margin-left: -90px;
+}
+
+.list {
+  float: left;
+}
+
+ul {
+  list-style: none;
+}
+
+.listContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -40px;
+  margin-left: -140px;
+}
+
+input {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -70px;
+  margin-left: -70px;
+}
+
+.weatherContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -450px;
+  margin-left: 850px;
 }
