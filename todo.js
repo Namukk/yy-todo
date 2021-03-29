@@ -25,14 +25,30 @@ const handleDelBtn = (event) => {
   toDoSave();
 };
 
+const handlePoDelBtn = (event) => {
+  const delLi = event.target.parentNode;
+  willDoList.removeChild(delLi);
+  const cleanToDos = willDos.filter((a) => {
+    return a.id !== parseInt(delLi.id);
+    //+delLi 해도 됨. ""delLi라고 하면 string화
+  });
+  willDos = cleanToDos;
+  willDoSave();
+};
+
 const handlePoBtn = (event) => {
   const li = event.target.parentNode;
-  toDoList.removeChild(li);
+  toDoList.removeChild(li); //todolist에서 삭제(html)
   const changeToDos = toDos.filter((a) => {
     return a.id === parseInt(li.id);
+  }); // willdolist에 추가(넘기기)
+  const cleanToDos = toDos.filter((a) => {
+    return a.id !== parseInt(li.id); //todolist에서 빼고 남은거 리턴
   });
   //Todo list에서 지우기
-  willDos = willDos.concat(changeToDos);
+  toDos = cleanToDos;
+  willDos = willDos.concat(changeToDos); //넘어온거 더하기
+  toDoSave();
   willDoSave();
 };
 
@@ -66,7 +82,7 @@ const writeWillDo = (text) => {
   const span = document.createElement("span");
   const poBtn = document.createElement("button");
   const delBtn = document.createElement("button");
-  const newId = toDos.length + 1;
+  const newId = willDos.length + 1;
   const toDoObj = {
     text: text,
     id: newId,
@@ -74,12 +90,12 @@ const writeWillDo = (text) => {
 
   span.innerText = text;
   delBtn.innerHTML = "X";
-  poBtn.innerHTML = "↩️";
-  delBtn.addEventListener("click", handleDelBtn);
-  poBtn.addEventListener("click", handlePoBtn);
+  // poBtn.innerHTML = "↩️";
+  delBtn.addEventListener("click", handlePoDelBtn);
+  // poBtn.addEventListener("click", handlePoBtn);
   li.appendChild(span);
   li.appendChild(delBtn);
-  li.appendChild(poBtn);
+  // li.appendChild(poBtn);
   li.id = newId;
   willDoList.appendChild(li);
   willDos.push(toDoObj);
