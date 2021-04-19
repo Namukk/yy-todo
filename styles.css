@@ -45,7 +45,7 @@ input {
 }
 
 .weatherContainer {
-  position: fixed;
+  position: flex;
   top: 50%;
   left: 50%;
   margin-top: -450px;
