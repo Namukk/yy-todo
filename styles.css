@@ -37,7 +37,7 @@ ul {
 }
 
 input {
-  position: flex;
+  position: fixed;
   top: 50%;
   left: 50%;
   margin-top: -70px;
